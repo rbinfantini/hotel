@@ -37,9 +37,3 @@ gcc Hotel.c -o hotel
 ./hotel
 ```
 
-## Authors
-
-- Kauã Bezerra Brito
-- Livia de Aguiar Almeida Figueiredo
-- Pedro Chagas Neves de Farias Nascimento
-- Rafael Barros Infantini
