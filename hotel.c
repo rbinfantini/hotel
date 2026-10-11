@@ -92,7 +92,7 @@ void TAXA_OCUP_RESERV(TipoApto Hotel[20][14]);
 void fClear();
 
 //AO EXECUTAR O PROGRAMA, COLOQUE EM TELA CHEIA PARA MELHOR VISUALIZACAO DO MAPA DO HOTEL
-main()
+int main()
 {
 	int andar, ap;
 	int op;

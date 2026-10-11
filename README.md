@@ -28,23 +28,14 @@ The project deliberately ignores dates: it only tracks the hotel's current state
 
 ## How to run
 
-**Dev-C++:** open `Hotel.cpp`, compile and run (F11). Use a maximized console window so the map fits.
+**Dev-C++:** open `Hotel.c`, compile and run (F11). Use a maximized console window so the map fits.
 
-**Command line:**
+**Command line (GCC or Clang):**
 
 ```bash
-gcc -x c -std=gnu99 Hotel.cpp -o hotel
+gcc -std=gnu99 Hotel.c -o hotel
 ./hotel
 ```
-
-The code is plain C (it only uses `stdio.h` and `string.h`), so compile it as C. Recent versions of `g++` may build it but the program can crash.
-
-## Known limitations
-
-- Uses `gets()`, which is unsafe and removed from newer C standards
-- No input validation (typing letters at a numeric prompt makes the menu loop forever)
-- Data is kept in memory only and is lost when the program exits
-- The occupancy-rate `printf` format is malformed and may print stray characters on some platforms
 
 ## Authors
 
