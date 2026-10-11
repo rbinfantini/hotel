@@ -1,58 +1,58 @@
-//KLPR-Hotel-Ativ06 - Controle de Reservas e Ocupação de Hotel
+//KLPR-Hotel-Ativ06 - Controle de Reservas e Ocupacao de Hotel
 /*Kaua Bezerra Brito, Livia de Aguiar Almeida Figueiredo, 
-  Pedro Chagas Neves de Farias Nascimento, Rafael Barros Infatini - 23/06/2025
+  Pedro Chagas Neves de Farias Nascimento, Rafael Barros Infantini - 23/06/2025
   
   Descricao do problema:
-  Um hotel possui 20 andares com 14 apartamentos por andar. Conforme os hospedes vão chegando, eles escolhem o apartamento desejado. 
-  Se estiver livre, o apartamento é alocado e o hospede faz o registro. Ao deixar o hotel, o hospede faz o check-out e libera o apartamento.  
-  O gerente também precisa saber quais apartamentos estão livres e a taxa de ocupação do hotel.
+  Um hotel possui 20 andares com 14 apartamentos por andar. Conforme os hospedes vao chegando, eles escolhem o apartamento desejado. 
+  Se estiver livre, o apartamento e alocado e o hospede faz o registro. Ao deixar o hotel, o hospede faz o check-out e libera o apartamento.  
+  O gerente tambem precisa saber quais apartamentos estao livres e a taxa de ocupacao do hotel.
   
   Objetivo do projeto:
-  • Desenvolver um programa em C para controlar a ocupação e reservas dos apartamentos do hotel. 
-    Deve ser mantido o status de cada apartamento e as opções de check-in/check-out e a 
-    apresentação da ocupação.  
-  • Visando a simplificação por motivos pedagógicos, este projeto não está considerando qualquer 
+  - Desenvolver um programa em C para controlar a ocupacao e reservas dos apartamentos do hotel. 
+    Deve ser mantido o status de cada apartamento e as opcoes de check-in/check-out e a 
+    apresentacao da ocupacao.  
+  - Visando a simplificacao por motivos pedagogicos, este projeto nao esta considerando qualquer 
     controle de agenda, ignorando por completo as datas de reserva, datas de checkin e chekout, 
     inclusive as disponibilidades de aptos no decorrer do tempo.
-  • Todas as operações apresentadas nos requisitos a seguir, podem ser aperfeiçoadas e 
-    complementadas conforme a criatividade dos alunos, desde que atendam o que está sendo 
-    proposto nestes objetivos (continua a simplificação de não considerar datas).
+  - Todas as operacoes apresentadas nos requisitos a seguir, podem ser aperfeicoadas e 
+    complementadas conforme a criatividade dos alunos, desde que atendam o que esta sendo 
+    proposto nestes objetivos (continua a simplificacao de nao considerar datas).
     
   Requisitos Funcionais:
-  • REQ01-O programa deve permitir ao usuário visualizar a ocupação dos apartamentos do hotel (mapa geral). 
+  - REQ01-O programa deve permitir ao usuario visualizar a ocupacao dos apartamentos do hotel (mapa geral). 
   
-  • REQ02-O programa deve permitir ao usuário fazer a reserva de um apartamento. 
+  - REQ02-O programa deve permitir ao usuario fazer a reserva de um apartamento. 
   
-  • REQ03-O programa deve permitir ao usuário realizar o checkin no hotel a partir de uma reserva realizada.
+  - REQ03-O programa deve permitir ao usuario realizar o checkin no hotel a partir de uma reserva realizada.
   
-  • REQ04-O programa deve permitir ao usuário realizar o checkin no hotel de hospede que não fez reserva.
+  - REQ04-O programa deve permitir ao usuario realizar o checkin no hotel de hospede que nao fez reserva.
   
-  • REQ05-O programa deve permitir ao usuário realizar o checkout, ou seja, liberar o apartamento que estava ocupado.
+  - REQ05-O programa deve permitir ao usuario realizar o checkout, ou seja, liberar o apartamento que estava ocupado.
   
-  • REQ06-O programa deve permitir ao usuário cancelar uma reserva.
+  - REQ06-O programa deve permitir ao usuario cancelar uma reserva.
   
-  • REQ07-O programa deve permitir ao usuário visualizar as taxas de ocupação e de reservas do hotel. 
+  - REQ07-O programa deve permitir ao usuario visualizar as taxas de ocupacao e de reservas do hotel. 
   
-  • REQ08-O programa deve permitir ao usuário cadastrar as informações do hospede 
-    (CPF, nome, endereço completo, telefone celular e e-mail) no checkin. 
+  - REQ08-O programa deve permitir ao usuario cadastrar as informacoes do hospede 
+    (CPF, nome, endereco completo, telefone celular e e-mail) no checkin. 
   
-  • REQ09-O programa deve permitir ao usuário visualizar a situação de um apto. específico, e caso esteja ocupado, 
-    todas as informações do hospede.
+  - REQ09-O programa deve permitir ao usuario visualizar a situacao de um apto. especifico, e caso esteja ocupado, 
+    todas as informacoes do hospede.
 
   Requisitos opcionais:
-  • REQ10-O programa deve permitir ao usuário quando fizer a reserva, já cadastrar os dados do hospede
+  - REQ10-O programa deve permitir ao usuario quando fizer a reserva, ja cadastrar os dados do hospede
  
-  • REQ11-O programa deve permitir ao usuário quando fizer o checkin, caso já exista uma reserva, 
+  - REQ11-O programa deve permitir ao usuario quando fizer o checkin, caso ja exista uma reserva, 
     conferir se se trata do hospede que fez a reserva. 
 
-  • REQ12–Outros controles imaginados e criados pelos alunos do grupo que valorizam e aperfeiçoam o Projeto do Hotel.
+  - REQ12-Outros controles imaginados e criados pelos alunos do grupo que valorizam e aperfeicoam o Projeto do Hotel.
   
-  Estes requisitos opcionais poderão ser desenvolvidos durante todos os outros anteriores*/
+  Estes requisitos opcionais poderao ser desenvolvidos durante todos os outros anteriores*/
 
 #include <stdio.h>
 #include <string.h>
 
-//Estrutura para armazenar endereço completo do hospede
+//Estrutura para armazenar endereco completo do hospede
 typedef struct Endereco 
 {
 	char ender[40];
@@ -89,10 +89,11 @@ int CANCELAR_RESERVA(TipoApto Hotel[20][14], int *andar, int *ap);
 void MAPA_HOTEL(TipoApto Hotel[20][14]);
 void INFO_APTO(TipoApto Hotel[20][14], int *andar, int *ap);
 void TAXA_OCUP_RESERV(TipoApto Hotel[20][14]);
-void fClear();
+void fClear(void);
+void lerLinha(char *destino, int tamanho);
 
 //AO EXECUTAR O PROGRAMA, COLOQUE EM TELA CHEIA PARA MELHOR VISUALIZACAO DO MAPA DO HOTEL
-int main()
+int main(void)
 {
 	int andar, ap;
 	int op;
@@ -106,10 +107,10 @@ int main()
 		}
 	}
 	
-	//Loop principal: apresenta menu e executa a operação escolhida pelo usuário
+	//Loop principal: apresenta menu e executa a operacao escolhida pelo usuario
     do 
 	{
-		//Exibe as opções do menu para o usuário
+		//Exibe as opcoes do menu para o usuario
         printf("\n\n=============== MENU ===============\n");
         printf("(1) - Check-in\n");
         printf("(2) - Check-out\n");
@@ -127,7 +128,7 @@ int main()
         if (op < 1 || op > 8) 
 		{
             printf("OPCAO INVALIDA.\n");
-            continue; //Volta pro início do loop
+            continue; //Volta pro inicio do loop
         }
 
         switch (op) 
@@ -229,7 +230,7 @@ int CHECK_IN(TipoApto Hotel[20][14], int *andar, int *ap)
 	{
 		printf("\n============= CLIENTE ==============\n");
 		printf("CPF: ");
-		gets(CPF);
+		lerLinha(CPF, sizeof(CPF));
 		
 		if (strcmp(Hotel[*andar - 1][*ap - 1].Cliente.cpf, CPF) == 0)
 		{
@@ -246,7 +247,9 @@ int CHECK_IN(TipoApto Hotel[20][14], int *andar, int *ap)
 	else
 	{
 		printf("\nAPARTAMENTO OCUPADO.\n");	
-	}  
+	}
+	
+	return 0;
 }
 
 int CADASTRO_HOSP(TipoApto Hotel[20][14], int* andar, int* ap)
@@ -254,28 +257,28 @@ int CADASTRO_HOSP(TipoApto Hotel[20][14], int* andar, int* ap)
 	printf("\n============= CLIENTE ==============\n");
 						
 	printf("CPF: ");
-	gets(Hotel[*andar - 1][*ap - 1].Cliente.cpf);
+	lerLinha(Hotel[*andar - 1][*ap - 1].Cliente.cpf, sizeof(Hotel[*andar - 1][*ap - 1].Cliente.cpf));
 						
 	printf("NOME: ");
-	gets(Hotel[*andar - 1][*ap - 1].Cliente.nome); 
+	lerLinha(Hotel[*andar - 1][*ap - 1].Cliente.nome, sizeof(Hotel[*andar - 1][*ap - 1].Cliente.nome)); 
 						
 	printf("ENDERECO: ");
-	gets(Hotel[*andar - 1][*ap - 1].Cliente.endereco.ender);
+	lerLinha(Hotel[*andar - 1][*ap - 1].Cliente.endereco.ender, sizeof(Hotel[*andar - 1][*ap - 1].Cliente.endereco.ender));
 						
 	printf("MUNICIPIO: ");
-	gets(Hotel[*andar - 1][*ap - 1].Cliente.endereco.munic);
+	lerLinha(Hotel[*andar - 1][*ap - 1].Cliente.endereco.munic, sizeof(Hotel[*andar - 1][*ap - 1].Cliente.endereco.munic));
 						
 	printf("UF: ");
-	gets(Hotel[*andar - 1][*ap - 1].Cliente.endereco.UF);
+	lerLinha(Hotel[*andar - 1][*ap - 1].Cliente.endereco.UF, sizeof(Hotel[*andar - 1][*ap - 1].Cliente.endereco.UF));
 						
 	printf("CEP: ");
-	gets(Hotel[*andar - 1][*ap - 1].Cliente.endereco.cep);
+	lerLinha(Hotel[*andar - 1][*ap - 1].Cliente.endereco.cep, sizeof(Hotel[*andar - 1][*ap - 1].Cliente.endereco.cep));
 						
 	printf("TELEFONE: ");
-	gets(Hotel[*andar - 1][*ap - 1].Cliente.telefone);
+	lerLinha(Hotel[*andar - 1][*ap - 1].Cliente.telefone, sizeof(Hotel[*andar - 1][*ap - 1].Cliente.telefone));
 										
 	printf("EMAIL: ");
-	gets(Hotel[*andar - 1][*ap - 1].Cliente.email);
+	lerLinha(Hotel[*andar - 1][*ap - 1].Cliente.email, sizeof(Hotel[*andar - 1][*ap - 1].Cliente.email));
 	
 	return 0;
 }
@@ -304,7 +307,7 @@ int CHECK_OUT(TipoApto Hotel[20][14], int *andar, int *ap)
 	{
 		printf("\n============= CLIENTE ==============\n");
 		printf("CPF: ");
-		gets(CPF);
+		lerLinha(CPF, sizeof(CPF));
 		
 		if (strcmp(Hotel[*andar - 1][*ap - 1].Cliente.cpf, CPF) == 0)
 		{
@@ -317,6 +320,8 @@ int CHECK_OUT(TipoApto Hotel[20][14], int *andar, int *ap)
 			printf("\nAPARTAMENTO OCUPADO POR OUTRO HOSPEDE.\n");
 		}
 	}
+	
+	return 0;
 }
 
 int RESERVA(TipoApto Hotel[20][14], int *andar, int *ap)
@@ -339,10 +344,12 @@ int RESERVA(TipoApto Hotel[20][14], int *andar, int *ap)
 				
 	else
 	{
-		CADASTRO_HOSP(Hotel, andar, ap);				//Cadastra as informações do hospede no momento da reserva
+		CADASTRO_HOSP(Hotel, andar, ap);				//Cadastra as informacoes do hospede no momento da reserva
 		Hotel[*andar - 1][*ap - 1].situacao = 'R';		//Reserva o apartamento livre
 		printf("\nRESERVA REALIZADA.\n");
 	}
+	
+	return 0;
 }
 
 int CANCELAR_RESERVA(TipoApto Hotel[20][14], int *andar, int *ap)
@@ -369,7 +376,7 @@ int CANCELAR_RESERVA(TipoApto Hotel[20][14], int *andar, int *ap)
 	{
 		printf("\n============= CLIENTE ==============\n");
 		printf("CPF: ");
-		gets(CPF);
+		lerLinha(CPF, sizeof(CPF));
 		
 		if (strcmp(Hotel[*andar - 1][*ap - 1].Cliente.cpf, CPF) == 0)
 		{
@@ -382,12 +389,14 @@ int CANCELAR_RESERVA(TipoApto Hotel[20][14], int *andar, int *ap)
 			printf("\nAPARTAMENTO RESERVADO POR OUTRO CLIENTE.\n");
 		}
 	}
+	
+	return 0;
 }
 
 //Exibe o mapa do hotel com os apartamentos de cada andar
-//O símbolo '.' indica apartamento livre
-//O símbolo 'R' indica apartamento reservado
-//O símbolo 'O' indica apartamento ocupado
+//O simbolo '.' indica apartamento livre
+//O simbolo 'R' indica apartamento reservado
+//O simbolo 'O' indica apartamento ocupado
 void MAPA_HOTEL(TipoApto Hotel[20][14])
 {
 	int andar, ap;
@@ -417,12 +426,12 @@ void MAPA_HOTEL(TipoApto Hotel[20][14])
 		
 		for (ap = 1; ap < 10; ap++)
 		{
-			printf("  %2.c ", Hotel[andar - 1][ap - 1].situacao);
+			printf("  %2c ", Hotel[andar - 1][ap - 1].situacao);
 		}
 		
 		for (ap = 10; ap < 15; ap++)
 		{
-			printf("  %3.c ", Hotel[andar - 1][ap - 1].situacao);
+			printf("  %3c ", Hotel[andar - 1][ap - 1].situacao);
 		}
 		
 		printf("  |              \n");
@@ -497,13 +506,30 @@ void TAXA_OCUP_RESERV(TipoApto Hotel[20][14])
 		}
 	}	
 	
-	printf("Porcentagem de quartos ocupados: %.2f%%%.\n", (O / ( 20 * 14)) * 100);
-	printf("Porcentagem de quartos reservados: %.2f%%%.\n", (R / ( 20 * 14)) * 100);
+	printf("Porcentagem de quartos ocupados: %.2f%%\n", (O / ( 20 * 14)) * 100);
+	printf("Porcentagem de quartos reservados: %.2f%%\n", (R / ( 20 * 14)) * 100);
 }
 
-//Função para limpar o buffer do teclado, evitando problemas com entrada de dados
-void fClear()
+//Funcao para limpar o buffer do teclado, evitando problemas com entrada de dados
+void fClear(void)
 {
 	char carac;
 	while ((carac = fgetc(stdin)) != EOF && carac != '\n') {}
+}
+
+//Le uma linha do teclado sem estourar o tamanho do campo (substitui o gets, que foi removido do C moderno)
+//Se o texto digitado for maior que o campo, o excesso e descartado
+void lerLinha(char *destino, int tamanho)
+{
+	int c, i = 0;
+	
+	while ((c = fgetc(stdin)) != EOF && c != '\n')
+	{
+		if (i < tamanho - 1)
+		{
+			destino[i++] = (char) c;
+		}
+	}
+	
+	destino[i] = '\0';
 }
